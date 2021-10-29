@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="root" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderWindowController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXTextField fx:id="txtCustomerName" labelFloat="true" layoutX="483.0" layoutY="24.0" prefHeight="28.0" prefWidth="437.0" promptText="Customer Name :">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="483.0" layoutY="84.0" prefHeight="28.0" prefWidth="437.0" promptText="Item Description :">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="txtQtyOnHand" labelFloat="true" layoutX="987.0" layoutY="84.0" prefHeight="28.0" prefWidth="161.0" promptText="Qty. on Hand" />
+                  <JFXButton id="btnSave" fx:id="btnSave" layoutX="987.0" layoutY="32.0" onAction="#btnAdd_OnAction" prefHeight="40.0" prefWidth="150.0" style="-fx-cursor: hand; -fx-background-color: #1040E2;" text="Add" textFill="WHITE" />
+                  <TableView fx:id="tblOrderDetails" layoutX="10.0" layoutY="117.0" prefHeight="335.0" prefWidth="1260.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="127.0">
+                     <columns>
+                        <TableColumn prefWidth="153.0" text="Code" />
+                        <TableColumn prefWidth="347.0" text="Description" />
+                        <TableColumn prefWidth="132.0" text="Qty" />
+                        <TableColumn prefWidth="176.0" text="Unit Price" />
+                        <TableColumn prefWidth="237.0" text="Total" />
+                        <TableColumn prefWidth="134.0" text="Delete" />
+                     </columns>
+                  </TableView>
+                  <JFXTextField fx:id="txtUnitPrice" labelFloat="true" layoutX="255.0" layoutY="84.0" prefHeight="28.0" prefWidth="161.0" promptText="Unit Price">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="txtQty" labelFloat="true" layoutX="255.0" layoutY="24.0" onAction="#txtQty_OnAction" prefHeight="28.0" prefWidth="161.0" promptText="Qty.">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXComboBox fx:id="cmbCustomerId" labelFloat="true" layoutX="30.0" layoutY="24.0" prefHeight="28.0" prefWidth="161.0" promptText="Customer Nic :" />
+                  <JFXComboBox fx:id="cmbItemCode" labelFloat="true" layoutX="30.0" layoutY="84.0" prefHeight="28.0" prefWidth="161.0" promptText="Item Code :" />
+               </children>
+            </AnchorPane>
+         </center>
+         <bottom>
+            <VBox alignment="CENTER_LEFT" prefHeight="59.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="900.0">
+                     <children>
+                        <Label fx:id="lblTotal" text="TOTAL : 0.00">
+                           <font>
+                              <Font size="32.0" />
+                           </font>
+                        </Label>
+                        <JFXButton id="btnSave" fx:id="btnPlaceOrder" onAction="#btnPlaceOrder_OnAction" prefHeight="35.0" prefWidth="101.0" style="-fx-cursor: hand; -fx-background-color: #2ecc71; -fx-text-fill: black;" text="Place Order">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </bottom>
+         <top>
+            <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="78.0" prefWidth="1280.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@assets/img/iconmonstr-checkout-8-240.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="1280.0">
+                     <children>
+                        <Label fx:id="lblId" alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="152.0" text="ORDER ID : 0000">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="55.0" prefWidth="1280.0">
+                     <children>
+                        <Label fx:id="lblDate" alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="152.0" text="2021-10-27">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="1280.0" />
+               </children>
+            </VBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
