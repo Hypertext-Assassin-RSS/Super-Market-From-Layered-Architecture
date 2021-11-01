@@ -1,9 +1,13 @@
+/*
+ * Copyright (c) 2021. By Rajith Sanjaya,
+ */
+
 package controller;
 
 import bo.custom.BoFactory;
+import bo.custom.ItemBO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import bo.custom.ItemBO;
 import dto.ItemDTO;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -12,7 +16,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -125,7 +128,7 @@ public class ItemWindowController {
         Platform.runLater(() -> primaryStage.sizeToScene());
     }
 
-    public void btnAddNew_OnAction(ActionEvent actionEvent) {
+    public void btnAddNew_OnAction(ActionEvent actionEvent) throws SQLException {
         txtCode.setDisable(false);
         txtDescription.setDisable(false);
         txtUnitPrice.setDisable(false);
@@ -160,7 +163,7 @@ public class ItemWindowController {
         }
     }
 
-    public void btnSave_OnAction(ActionEvent actionEvent) {
+    public void btnSave_OnAction(ActionEvent actionEvent) throws SQLException {
         String code = txtCode.getText();
         String description = txtDescription.getText();
 
@@ -192,8 +195,6 @@ public class ItemWindowController {
 
                 tblItems.getItems().add(new ItemTM(code, description, unitPrice, qtyOnHand));
 
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -211,8 +212,6 @@ public class ItemWindowController {
                 selectedItem.setQtyOnHand(qtyOnHand);
                 selectedItem.setUnitPrice(unitPrice);
                 tblItems.refresh();
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -227,11 +226,9 @@ public class ItemWindowController {
     }
 
 
-    private String generateNewId() {
+    private String generateNewId() throws SQLException {
         try {
             return itemBO.generateNewID();
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

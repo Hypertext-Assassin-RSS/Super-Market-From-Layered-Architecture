@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2021. By Rajith Sanjaya,
+ */
+
 package controller;
 
 import javafx.animation.FadeTransition;
@@ -61,7 +65,7 @@ public class MainWindowController {
             scaleT.play();
 
             icon.setEffect(null);
-            lblOption.setText("Please select one of above main operations to proceed");
+            lblOption.setText("Please Select Option To Continue");
         }
     }
 
@@ -83,6 +87,8 @@ public class MainWindowController {
                 case "imgOrderHistory":
                     lblOption.setText("View Orders History");
                     break;
+                case "imgSupplier":
+                    lblOption.setText("Manage Supplier");
             }
 
             ScaleTransition scaleT = new ScaleTransition(Duration.millis(200), icon);
@@ -109,16 +115,18 @@ public class MainWindowController {
 
             switch (icon.getId()) {
                 case "imgCustomer":
-                    root = FXMLLoader.load(this.getClass().getResource("/view/manage-customers-form.fxml"));
+                    root = FXMLLoader.load(this.getClass().getResource("/view/customer-window.fxml"));
                     break;
                 case "imgItem":
                     root = FXMLLoader.load(this.getClass().getResource("/view/item-window.fxml"));
                     break;
                 case "imgPlaceOrder":
-                    root = FXMLLoader.load(this.getClass().getResource("/view/place-order-form.fxml"));
+                    root = FXMLLoader.load(this.getClass().getResource("/view/order-window.fxml"));
                     break;
                 case "imgOrderHistory":
-                    root = null;
+                    root = FXMLLoader.load(this.getClass().getResource("/view/order-histry-window.fxml"));
+                case "imgSupplier":
+                    root = FXMLLoader.load(this.getClass().getResource("/view/supplier-window.fxml"));
                     break;
             }
 
